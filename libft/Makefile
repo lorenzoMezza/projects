@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lmezzaba <mezzabarba.lorenzo@gmail.com>    +#+  +:+       +#+         #
+#    By: lmezzaba <lmezzaba@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/19 10:43:49 by lmezzaba          #+#    #+#              #
-#    Updated: 2026/05/19 10:53:38 by lmezzaba         ###   ########.fr        #
+#    Updated: 2026/05/19 16:57:54 by lmezzaba         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 

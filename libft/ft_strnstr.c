@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmezzaba <mezzabarba.lorenzo@gmail.com>    +#+  +:+       +#+        */
+/*   By: lmezzaba <lmezzaba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/19 10:43:08 by lmezzaba          #+#    #+#             */
-/*   Updated: 2026/05/19 10:43:09 by lmezzaba         ###   ########.fr       */
+/*   Updated: 2026/05/19 14:51:15 by lmezzaba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 			if (little[j + 1] == '\0')
 				return ((char *)&big[i]);
 			++j;
-		}	
+		}
 		++i;
-	}	
+	}
 	return (NULL);
 }

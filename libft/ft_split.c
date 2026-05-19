@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmezzaba <mezzabarba.lorenzo@gmail.com>    +#+  +:+       +#+        */
+/*   By: lmezzaba <lmezzaba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/19 10:42:40 by lmezzaba          #+#    #+#             */
-/*   Updated: 2026/05/19 10:42:41 by lmezzaba         ###   ########.fr       */
+/*   Updated: 2026/05/19 14:46:30 by lmezzaba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	ft_count_words(const char *s, char c)
 			words++;
 			while (s[i] && s[i] != c)
 				i++;
-		}	
+		}
 		else
 			i++;
 	}
@@ -41,7 +41,7 @@ static char	*word_splitter(const char *s, char c)
 	i = 0;
 	while (s[i] && s[i] != c)
 		i++;
-	word = (char *) malloc(sizeof(char) * (i + 1));
+	word = (char *)malloc(sizeof(char) * (i + 1));
 	if (!word)
 		return (NULL);
 	i = 0;
@@ -54,22 +54,20 @@ static char	*word_splitter(const char *s, char c)
 	return (word);
 }
 
-char	**ft_split(char const *s, char c)
+static int	ft_fill_words(char **words, const char *s, char c)
 {
-	int		i;
-	int		j;
-	char	**words;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
-	words = (char **) malloc(sizeof(char *) * (ft_count_words(s, c) + 1));
-	if (!words || !s)
-		return (NULL);
 	while (s[i])
 	{
 		if (s[i] != c)
 		{
 			words[j] = word_splitter(&s[i], c);
+			if (!words[j])
+				return (0);
 			while (s[i] && s[i] != c)
 				i++;
 			j++;
@@ -77,6 +75,23 @@ char	**ft_split(char const *s, char c)
 		else
 			i++;
 	}
-	words[j] = 0;
+	words[j] = NULL;
+	return (1);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**words;
+
+	if (!s)
+		return (NULL);
+	words = (char **)malloc(sizeof(char *) * (ft_count_words(s, c) + 1));
+	if (!words)
+		return (NULL);
+	if (!ft_fill_words(words, s, c))
+	{
+		free(words);
+		return (NULL);
+	}
 	return (words);
 }
