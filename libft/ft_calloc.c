@@ -6,7 +6,7 @@
 /*   By: lmezzaba <lmezzaba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/19 10:38:43 by lmezzaba          #+#    #+#             */
-/*   Updated: 2026/05/19 18:04:34 by lmezzaba         ###   ########.fr       */
+/*   Updated: 2026/05/20 15:09:02 by lmezzaba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	*ft_calloc(size_t nmemb, size_t size)
 
 	if (size != 0 && nmemb > (size_t)-1 / size)
 		return (NULL);
-
 	total = nmemb * size;
 	p = malloc(total);
 	if (!p)

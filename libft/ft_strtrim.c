@@ -6,7 +6,7 @@
 /*   By: lmezzaba <lmezzaba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/19 10:43:16 by lmezzaba          #+#    #+#             */
-/*   Updated: 2026/05/19 15:05:02 by lmezzaba         ###   ########.fr       */
+/*   Updated: 2026/05/20 15:09:47 by lmezzaba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,24 +25,22 @@ static int	is_set(char c, char const *set)
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	size_t	len;
-	size_t	sublen;
-	char	*trimmed;
 	size_t	i;
 	size_t	j;
+	char	*trimmed;
 
-	len = ft_strlen(s1);
+	if (!s1 || !set)
+		return (NULL);
 	i = 0;
 	while (s1[i] && is_set(s1[i], set))
 		i++;
-	j = len - 1;
-	while (j > i && is_set(s1[j], set))
+	j = ft_strlen(s1);
+	while (j > i && is_set(s1[j - 1], set))
 		j--;
-	sublen = j - i;
-	trimmed = (char *)malloc(sizeof(char) * (sublen + 2));
+	trimmed = (char *)malloc(sizeof(char) * ((j - i) + 1));
 	if (!trimmed)
 		return (NULL);
-	ft_memcpy(trimmed, s1 + i, sublen + 1);
-	trimmed[sublen + 1] = '\0';
+	ft_memcpy(trimmed, s1 + i, j - i);
+	trimmed[j - i] = '\0';
 	return (trimmed);
 }

@@ -6,7 +6,7 @@
 /*   By: lmezzaba <lmezzaba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/19 10:42:40 by lmezzaba          #+#    #+#             */
-/*   Updated: 2026/05/19 14:46:30 by lmezzaba         ###   ########.fr       */
+/*   Updated: 2026/05/20 15:09:36 by lmezzaba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,16 @@ static char	*word_splitter(const char *s, char c)
 	return (word);
 }
 
+static void	free_words(char **words, int count)
+{
+	while (count > 0)
+	{
+		count--;
+		free(words[count]);
+	}
+	free(words);
+}
+
 static int	ft_fill_words(char **words, const char *s, char c)
 {
 	int	i;
@@ -67,7 +77,10 @@ static int	ft_fill_words(char **words, const char *s, char c)
 		{
 			words[j] = word_splitter(&s[i], c);
 			if (!words[j])
+			{
+				free_words(words, j);
 				return (0);
+			}
 			while (s[i] && s[i] != c)
 				i++;
 			j++;
@@ -85,13 +98,11 @@ char	**ft_split(char const *s, char c)
 
 	if (!s)
 		return (NULL);
-	words = (char **)malloc(sizeof(char *) * (ft_count_words(s, c) + 1));
+	words = (char **)malloc(sizeof(char *)
+			* (ft_count_words(s, c) + 1));
 	if (!words)
 		return (NULL);
 	if (!ft_fill_words(words, s, c))
-	{
-		free(words);
 		return (NULL);
-	}
 	return (words);
 }

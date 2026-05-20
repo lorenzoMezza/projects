@@ -6,7 +6,7 @@
 /*   By: lmezzaba <lmezzaba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/19 10:43:37 by lmezzaba          #+#    #+#             */
-/*   Updated: 2026/05/19 16:39:27 by lmezzaba         ###   ########.fr       */
+/*   Updated: 2026/05/20 14:31:05 by lmezzaba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-# include <string.h>
 
 typedef struct s_list
 {
