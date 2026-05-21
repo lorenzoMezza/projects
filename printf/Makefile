@@ -1,43 +1,43 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: lmezzaba <mezzabarba.lorenzo@gmail.com>    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/05/20 11:15:46 by lmezzaba          #+#    #+#              #
-#    Updated: 2026/05/20 11:15:50 by lmezzaba         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+NAME    =   libftprintf.a
 
-NAME	=	libftprintf.a
+SRC     =   ft_printf.c     \
+            ft_put_char.c   \
+            ft_put_str.c    \
+            ft_put_nbr.c    \
+            ft_put_uint.c   \
+            ft_put_hex.c    \
+            ft_put_ptr.c    \
 
-SRC		=	ft_printf.c		\
-			ft_put_char.c	\
-			ft_put_str.c	\
-			ft_put_nbr.c	\
-			ft_put_uint.c	\
-			ft_put_hex.c	\
-			ft_put_ptr.c	\
+BONUS_SRC = ft_printf_bonus.c    \
+            ft_put_char_bonus.c  \
+            ft_put_str_bonus.c   \
+            ft_put_nbr_bonus.c   \
+            ft_put_uint_bonus.c  \
+            ft_put_hex_bonus.c   \
+            ft_put_ptr_bonus.c   \
 
-OBJS	=	$(SRC:.c=.o)
+OBJS        = $(SRC:.c=.o)
+BONUS_OBJS  = $(BONUS_SRC:.c=.o)
 
-CC		=	gcc
-CFLAGS	=	-Wall -Werror -Wextra
-AR		=	ar crs
-RM		=	rm -rf
+CC      =   gcc
+CFLAGS  =   -Wall -Werror -Wextra
+AR      =   ar crs
+RM      =   rm -rf
 
-$(NAME):	$(OBJS)
+$(NAME): $(OBJS)
 	$(AR) $(NAME) $(OBJS)
 
-all:		$(NAME)
+all: $(NAME)
+
+bonus: $(BONUS_OBJS)
+	$(AR) $(NAME) $(BONUS_OBJS)
 
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(OBJS) $(BONUS_OBJS)
 
-fclean:		clean
+fclean: clean
 	$(RM) $(NAME)
 
-re:			fclean all
+re: fclean all
 
-.PHONY:		all clean fclean re
+.PHONY: all clean fclean re bonus
